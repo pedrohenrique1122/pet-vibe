@@ -8,7 +8,9 @@ export function CriarAnimalValidation(animal) {
 if (!animal.imagem) {
     throw new Error('A imagem é obrigatória.');
 }
-
+if (!animal.tipo || !['Cachorro', 'Gato'].includes(animal.tipo)) {
+    throw new Error('Tipo de animal inválido');
+}
 if (!animal.nome) {
     throw new Error('O nome é obrigatório.');
 }

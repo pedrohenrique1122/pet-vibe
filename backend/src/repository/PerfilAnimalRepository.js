@@ -6,6 +6,7 @@ SELECT
     ong.nome AS nome_ong,
     perfil_animal.id_animal,
     perfil_animal.nome AS nome_animal,
+    perfil_animal.tipo,
     perfil_animal.idade,
     perfil_animal.raca,
     DATE_FORMAT(perfil_animal.data_de_nascimento, '%d/%m/%Y') AS data_nascimento,
@@ -28,6 +29,7 @@ SELECT
     ong.nome AS nome_ong,
         perfil_animal.id_animal,
     perfil_animal.nome AS nome_animal,
+    perfil_animal.tipo,
     perfil_animal.idade,
     perfil_animal.raca,
     DATE_FORMAT(perfil_animal.data_de_nascimento, '%d/%m/%Y') AS data_nascimento,
@@ -51,6 +53,7 @@ export async function CriarAnimal(id, animal) {
         INSERT INTO perfil_animal (
             id_ong,
             imagem,
+            tipo,
             nome,
             idade,
             raca,
@@ -60,12 +63,13 @@ export async function CriarAnimal(id, animal) {
             porte,
             descricao
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     let [resultado] = await con.query(command, [
         id,
         animal.imagem,
+        animal.tipo,
         animal.nome,
         animal.idade,
         animal.raca,
