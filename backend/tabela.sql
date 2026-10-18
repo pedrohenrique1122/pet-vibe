@@ -59,6 +59,7 @@ create table perfil_animal(
 id_animal int primary key auto_increment,
 id_ong int,
 imagem VARCHAR(800),
+tipo enum ('Cachorro','Gato') not null,
 nome varchar(100),
 idade int,
 raca varchar(100),
@@ -74,6 +75,7 @@ foreign key (id_ong) references ong(id_ong)
 CREATE TABLE busca(
 id_busca INT PRIMARY KEY AUTO_INCREMENT,
 id_usuario INT,
+tipo enum ('Cachorro','Gato'),
 raca VARCHAR(100),
 castrado BOOLEAN,
 sexo ENUM('masculino','feminino'),
